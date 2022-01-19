@@ -109,16 +109,27 @@ class TicketControl extends React.Component {
       buttonText = "Return to ticket list";
   
     } else {
-      currentlyVisibleState = <TicketList ticketList={this.state.mainTicketList} onTicketSelection={this.handleChangingSelectedTicket} />;//this is how we pass mainTicketList to the ticketlist where ticketList acts as the property to Ticketlist and onticketSelection will be the property representing the changing selected ticket
+      currentlyVisibleState = <TicketList ticketList={this.props.mainTicketList} onTicketSelection={this.handleChangingSelectedTicket} />;//this is how we pass mainTicketList to the ticketlist where ticketList acts as the property to Ticketlist and onticketSelection will be the property representing the changing selected ticket
       buttonText = "Add Ticket";
     }
     return (
       <React.Fragment>
-        {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
-      </React.Fragment>
-    );
-  }
+      <hr />
+      {/* We now need to map over the values of an object, not an array. */}
+      {Object.values(props.ticketList).map((ticket) =>
+        <Ticket
+          whenTicketClicked = { props.onTicketSelection }
+          names={ticket.names}
+          location={ticket.location}
+          issue={ticket.issue}
+          formattedWaitTime={ticket.formattedWaitTime}
+          id={ticket.id}
+          key={ticket.id}/>
+      )}
+      {/* Don't forget to add the curly brace above - otherwise there will be a syntax error. */}
+    </React.Fragment>
+  );
+}
 
 }
 
