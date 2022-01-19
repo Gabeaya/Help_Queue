@@ -38,9 +38,17 @@ class TicketControl extends React.Component {
 
   //handles adding a new tick to the mainticketlist with new ticket as a parameter
   handleAddingNewTicketToList = (newTicket) => {
-    const newMainTicketList = this.state.mainTicketList.concat(newTicket);
-    this.setState({mainTicketList: newMainTicketList,
-                  formVisibleOnPage: false });
+    const { dispatch } = this.props;
+    const { id, names, location, issue } = newTicket;
+    const action = {
+      type: 'ADD_TICKET',
+      id: id,
+      names: names,
+      location: location,
+      issue: issue,
+    }
+    dispatch(action);//this dispatches our action to the store and changes that store
+    this.setState({formVisibleOnPage: false});
   }
 
 //handles setting state to a selected ticket using the id as a param
