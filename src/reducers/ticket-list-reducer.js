@@ -12,6 +12,10 @@ export default (state = {}, action) => {//we use default because there will only
         id: id
       }
     });
+  case 'DELETE_TICKET':
+    let newState = { ...state };//makes a copy of the current state
+    delete newState[id];//uses delete function to remove the key value pair
+    return newState; //returns our updated state
     default:
       return state;
   }
