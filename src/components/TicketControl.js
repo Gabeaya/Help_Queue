@@ -134,7 +134,8 @@ class TicketControl extends React.Component {
 }
 
 TicketControl.propTypes = {
-  mainTicketList: PropTypes.object
+  mainTicketList: PropTypes.object,
+  onTicketSelection: PropTypes.func
 };
 
 const mapStateToProps =  state => {
