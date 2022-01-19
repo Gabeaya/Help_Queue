@@ -7,22 +7,22 @@ function TicketList(props){
   return (
     <React.Fragment>
       <hr/>
-        {props.ticketList.map((ticket) =>
-          <Ticket 
-            whenTicketClicked = { props.onTicketSelection}//TicketControl passes the handleChangingSelectedTicket method using onTicketSelction prop
-
-            names={ticket.names}
-            location={ticket.location}
-            issue={ticket.issue}
-            id={ticket.id}//we include id because key cant be pssed as a prop to a child component
-            key={ticket.id}/>
-        )}
+      {Object.values(props.ticketList).map((ticket) =>
+        <Ticket
+          whenTicketClicked = { props.onTicketSelection }
+          names={ticket.names}
+          location={ticket.location}
+          issue={ticket.issue}
+          formattedWaitTime={ticket.formattedWaitTime}
+          id={ticket.id}
+          key={ticket.id}/>
+      )}
     </React.Fragment>
   );
 }
 
 TicketList.propTypes = {
-  ticketList: PropTypes.array,
+  ticketList: PropTypes.object,
   onTicketSelection: PropTypes.func
 };
 export default TicketList;
