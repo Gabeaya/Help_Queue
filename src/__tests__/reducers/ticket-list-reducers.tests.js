@@ -12,11 +12,11 @@ describe('ticketListReducer', () => {
     expect(ticketListReducer({}, { type: null })).toEqual({});
   });
 
-  test('Should succesfully addd new ticket data to theMainTickeList ',() => {
-    const {names, location, issue, id } = ticketData;
+  test('Should succesfully add new ticket data to theMainTickeList ',() => {
+    const {names, location, issue, id } = ticketData;//destructuring syntax is used to provde keys from our itcketData
     action = {
       type: 'ADD_TICKET',
-      names = names,
+      names: names,
       location: location,
       issue: issue,
       id: id
