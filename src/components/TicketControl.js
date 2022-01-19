@@ -57,15 +57,7 @@ class TicketControl extends React.Component {
     this.setState({selectedTicket: selectedTicket});
   }
 //handles deleting ticket from mainticketlist
-  handleDeletingTicket = (id) => {
-    const newMainTicketList = this.state.mainTicketList.filter(ticket => ticket.id !== id);
-    this.setState({
-      mainTicketList: newMainTicketList,
-      selectedTicket: null
-
-    });
-    
-  }
+  
 
   //Method that shows the edit form
 
@@ -74,22 +66,31 @@ class TicketControl extends React.Component {
     this.setState({editing: true});
   }
 
-handleEditingTicketInList = (ticketToEdit) => {
-  const { dispatch } = this.props;
-  const { id, names, location, issue } = ticketToEdit;
-  const action = {
-    type: 'ADD_TICKET',
-    id: id,
-    names: names,
-    location: location,
-    issue: issue,
+  handleEditingTicketInList = (ticketToEdit) => {
+    const { dispatch } = this.props;
+    const { id, names, location, issue } = ticketToEdit;
+    const action = {
+      type: 'ADD_TICKET',
+      id: id,
+      names: names,
+      location: location,
+      issue: issue,
+    }
+    dispatch(action);
+    this.setState({
+      editing: false,
+      selectedTicket: null
+    });
   }
-  dispatch(action);
-  this.setState({
-    editing: false,
-    selectedTicket: null
-  });
-}
+  handleDeletingTicket = (id) => {
+    const { dispatch } = this.props;
+    const action = {
+      type: 'DELETE_TICKET',
+      id: id
+    }
+    dispatch(action);
+    this.setState({selectedTicket: null});
+  }
 
   render(){  
     let currentlyVisibleState = null;
