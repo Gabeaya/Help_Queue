@@ -29,7 +29,11 @@ class TicketControl extends React.Component {
         editing: false
       });
     } else {
-      
+      const { dispatch } = this.props;
+      const action = {
+        type: 'TOGGLE_FORM'
+      }
+      dispatch(action);
     }
   }
 
@@ -45,7 +49,7 @@ class TicketControl extends React.Component {
       issue: issue,
     }
     //setState is like dispatch in that it communicates with the state store as dispatch does to our redux store
-    
+
     dispatch(action);//this dispatches our action to the store and changes that store
     
   }
