@@ -51,7 +51,10 @@ class TicketControl extends React.Component {
     //setState is like dispatch in that it communicates with the state store as dispatch does to our redux store
 
     dispatch(action);//this dispatches our action to the store and changes that store
-    
+    const action2 = {
+      type= 'TOGGLE_FORM'
+    }
+    dispatch(action2);
   }
 
 //handles setting state to a selected ticket using the id as a param
@@ -106,7 +109,7 @@ class TicketControl extends React.Component {
       currentlyVisibleState = <TicketDetail ticket = {this.state.selectedTicket} onClickingDelete = {this.handleDeletingTicket} onClickingEdit = {this.handleEditClick}/>
       buttonText = "Return to ticket list";
 
-    } else if (this.state.formVisibleOnPage){
+    } else if (this.props.formVisibleOnPage){
       currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList}/>;//onNewTicketCreation will be the propety of NewTicketForm object and it will be equal to the handle we created on line 21
       buttonText = "Return to ticket list";
   
