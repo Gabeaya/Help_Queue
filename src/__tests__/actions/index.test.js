@@ -13,4 +13,13 @@ describe('help queue actions', () => {
       type: 'TOGGLE_FORM'
     });
   });
+  it('addTicket should create ADD_TICKET action', () => {
+    expect(actions.addTicket({names: 'Joe and Jose',location:'harvard', issue:'where the rukas', id:1})).toEqual({
+      type:'ADD_TICKET',
+      names: 'Joe and Jose',
+      location: 'harvard',
+      issue:'where the rukas',
+      id:1
+    });
+  });
 });
