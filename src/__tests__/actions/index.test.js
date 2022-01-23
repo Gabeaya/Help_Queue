@@ -7,4 +7,10 @@ describe('help queue actions', () => {
       id:1
     });
   });
+
+  it('toggleaform should create TOGGLE+FORM ACTION', () => {
+    expect(actions.toggleForm()).toEqual({
+      type: 'TOGGLE_FORM'
+    });
+  });
 });
