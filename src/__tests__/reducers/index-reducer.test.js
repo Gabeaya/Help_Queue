@@ -1,5 +1,5 @@
 import rootReducer from '../../reducers/index';
-import { createStore } from 'redus';
+import { createStore } from 'redux';
 import formVisibleReducer from '../../reducers/form-visible-reducer';
 import ticketListReducer from '../../reducers/ticket-list-reducer';
 
@@ -14,7 +14,7 @@ describe("rootReducer", () => {
       formVisibleOnPage: false
     });
   });
-
+//sanity tests to ensure our root reducer is returning the default state of each reducer
   test('Check that initial state of ticketListReducer matches root reducer', () => {
     expect(store.getState().mainTicketList).toEqual(ticketListReducer(undefined, { type: null }));
   });
@@ -22,4 +22,26 @@ describe("rootReducer", () => {
   test('Check that initial state of formVisibleReducer matches root reducer', () => {
     expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, { type: null }));
   });
+
+  //these tests will ensure the root reducer reflects changes of the combined reducers when actions are passed through them
+
+  test('Check that ADD_TICKET action works for ticketListReducer and root reducer', () => {
+    const action = {
+      type: 'ADD_TICKET',
+      names: 'Ryan & Aimen',
+      location: '4b',
+      issue: 'Redux action is not working correctly.',
+      id: 1
+    }
+    store.dispatch(action);
+    expect(store.getState().mainTicketList).toEqual(ticketListReducer(undefined, action));
+  });
+  
+  test('Check that TOGGLE_FORM action works for formVisibleReducer and root reducer', () => {
+    const action = {
+      type: 'TOGGLE_FORM'
+    }
+    store.dispatch(action);
+    expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, action));
+  });  
 });
