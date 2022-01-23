@@ -14,11 +14,11 @@ describe('help queue actions', () => {
     });
   });
   it('addTicket should create ADD_TICKET action', () => {
-    expect(actions.addTicket({names: 'Joe and Jose',location:'harvard', issue:'where the rukas', id:1})).toEqual({
+    expect(actions.addTicket({names: 'Jo and Jasmin',location:'3E', issue:'redux not working', id:1})).toEqual({
       type:'ADD_TICKET',
-      names: 'Joe and Jose',
-      location: 'harvard',
-      issue:'where the rukas',
+      names: 'Jo and Jasmin',
+      location: '3E',
+      issue:'redux not working',
       id:1
     });
   });
