@@ -13,7 +13,6 @@ class TicketControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false,
       selectedTicket: null, //selected ticket is null because no tickets have been selected yet
       editing: false
     };
@@ -26,14 +25,11 @@ class TicketControl extends React.Component {
   handleClick = () => {
     if(this.state.selectedTicket != null) {
       this.setState({
-        formVisibleOnPage: false,
         selectedTicket: null,
         editing: false
       });
     } else {
-      this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage,
-      }));
+      
     }
   }
 
@@ -48,8 +44,10 @@ class TicketControl extends React.Component {
       location: location,
       issue: issue,
     }
+    //setState is like dispatch in that it communicates with the state store as dispatch does to our redux store
+    
     dispatch(action);//this dispatches our action to the store and changes that store
-    this.setState({formVisibleOnPage: false});
+    
   }
 
 //handles setting state to a selected ticket using the id as a param
