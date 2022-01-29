@@ -18,7 +18,26 @@ class TicketControl extends React.Component {
       editing: false
     };
   }
+//when component is mounted the following will trigger
+  componentDidMount() {
+    this.waitTimeUpdateTimer = setInterval(() => 
+      this.updateTickeElapsedWaitTime(),
+    1000
+    );
+  }
 
+  componentDidUpdate() {
+    console.log("component update!");
+  }
+
+  componentWillUnmount() {
+    console.log("component unmounted! ");
+    clearInterval(this.waitTimeUpdateTimer);
+  }
+
+  updateTickeElapsedWaitTime = () => {
+    console.log("tick");
+  }
 
   //Custom methods
 
