@@ -1,5 +1,5 @@
 import ticketListReducer from '../../reducers/ticket-list-reducer';
-
+import * as c from '../../actions/ActionTypes';
 describe('ticketListReducer', () => {
   let action;
   const ticketData = {
@@ -8,8 +8,8 @@ describe('ticketListReducer', () => {
     issue: 'Redux action is not working',
     timeOpen : 0,
     id: 2
-    
   };
+
   const currentState = {
     1: {names: 'Ryan & Aimen',
     location: '4b',
