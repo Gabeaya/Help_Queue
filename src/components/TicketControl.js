@@ -21,20 +21,21 @@ class TicketControl extends React.Component {
 //when component is mounted the following will trigger
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() => 
-      this.updateTickeElapsedWaitTime(),
-    1000
+      this.updateTickeElapsedWaitTime(),//this is the code to be executed in intervals
+    1000//this is the interval per milliseconds
     );
   }
-
+//this allows us to se each time the component is updated
   componentDidUpdate() {
     console.log("component update!");
   }
+//this component gets called when the component is cleared from the ui
 
   componentWillUnmount() {
     console.log("component unmounted! ");
-    clearInterval(this.waitTimeUpdateTimer);
+    clearInterval(this.waitTimeUpdateTimer);//this clears the timer from the ui
   }
-
+//this method is triggered each second in our setinteraval
   updateTickeElapsedWaitTime = () => {
     console.log("tick");
   }
