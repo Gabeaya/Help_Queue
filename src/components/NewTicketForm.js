@@ -4,7 +4,7 @@ import ReusableForm from "./ReusableForm";
 import { useFirestore } from 'react-redux-firebase';
 
 function NewTicketForm(props){
-  const firestore = useFireStore();
+  const firestore = useFirestore();
 
   function addTicketToFireStore(event) {
     event.preventDefault();
