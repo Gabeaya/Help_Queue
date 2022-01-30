@@ -22,7 +22,7 @@ class TicketControl extends React.Component {
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() => 
       this.updateTickeElapsedWaitTime(),//this is the code to be executed in intervals
-    1000//this is the interval per milliseconds
+    60000//this is a (60 seconds) minute interval
     );
   }
 //this allows us to se each time the component is updated
@@ -32,12 +32,16 @@ class TicketControl extends React.Component {
 //this component gets called when the component is cleared from the ui
 
   componentWillUnmount() {
-    console.log("component unmounted! ");
     clearInterval(this.waitTimeUpdateTimer);//this clears the timer from the ui
   }
 //this method is triggered each second in our setinteraval
   updateTickeElapsedWaitTime = () => {
-    console.log("tick");
+    const { dispatch } = this.props;
+    Object.values(this.props.mainTicketList).forEach(ticket => {
+      const newFormattedWaitTime = ticket.timeOpen.fromNow(true);
+      const action = a.updateTime(ticket,id, newFormattedWaitTime);
+      dispatch(action);
+    })
   }
 
   //Custom methods
