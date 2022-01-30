@@ -61,13 +61,10 @@ class TicketControl extends React.Component {
   }
 
   //handles adding a new tick to the mainticketlist with new ticket as a parameter
-  handleAddingNewTicketToList = (newTicket) => {
+  handleAddingNewTicketToList = () => {
     const { dispatch } = this.props;
-    const action = a.addTicket(newTicket);
+    const action = a.toggleForm();
     dispatch(action);
-    const action2 = a.toggleForm();
-    dispatch(action2);
-    //setState is like dispatch in that it communicates with the state store as dispatch does to our redux store
   }
 
 //handles setting state to a selected ticket using the id as a param
