@@ -39,7 +39,7 @@ class TicketControl extends React.Component {
     const { dispatch } = this.props;
     Object.values(this.props.mainTicketList).forEach(ticket => {
       const newFormattedWaitTime = ticket.timeOpen.fromNow(true);
-      const action = a.updateTime(ticket,id, newFormattedWaitTime);
+      const action = a.updateTime(ticket.id, newFormattedWaitTime);
       dispatch(action);
     })
   }
