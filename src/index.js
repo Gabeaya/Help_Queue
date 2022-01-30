@@ -9,7 +9,14 @@ import rootReducer from './reducers';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 import firebase from "./firebase";
+import { firestoreReducer } from 'redux-firestore';
 
+const rootReducer = combineReducers({
+  formVisibleOnPage: formVisibleReducer,
+  mainTicketList: ticketListReducer,
+  // new line of code below
+  firestore: firestoreReducer
+});
 const store = createStore(rootReducer);
 
 const rrfProps = {
