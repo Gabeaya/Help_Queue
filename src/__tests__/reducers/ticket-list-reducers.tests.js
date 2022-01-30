@@ -47,7 +47,7 @@ describe('ticketListReducer', () => {
         issue: issue,
         timeOpen: timeOpen,
         id: id,
-        formattedWaitTime: 'a few secs'
+        formattedWaitTime: 'a few seconds'
       }
     });
   });
