@@ -1,6 +1,6 @@
 import * as c from './../actions/ActionTypes';
 export default (state = {}, action) => {//we use default because there will only be one function below
-  const { names, location, issue, id, formattedWaitTime, timeOpen } = action;
+  const { id, formattedWaitTime } = action;
   switch (action.type) {
   case c.DELETE_TICKET:
     let newState = { ...state };//makes a copy of the current state
