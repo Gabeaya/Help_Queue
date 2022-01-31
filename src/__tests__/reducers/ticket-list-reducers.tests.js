@@ -28,30 +28,7 @@ describe('ticketListReducer', () => {
     expect(ticketListReducer({}, { type: null })).toEqual({});
   });
 
-  test('Should succesfully add new ticket data to theMainTickeList ',() => {
-    const {names, location, issue, timeOpen, id } = ticketData;//destructuring syntax is used to provde keys from our itcketData
-    action = {
-      type: c.ADD_TICKET,
-      names: names,
-      location: location,
-      issue: issue,
-      timeOpen: timeOpen,
-      id: id,
-      formattedWaitTime: new Moment().fromNow(true)
-    };
-
-    expect(ticketListReducer({}, action)).toEqual({
-      [id] : {
-        names:names,
-        location:location,
-        issue: issue,
-        timeOpen: timeOpen,
-        id: id,
-        formattedWaitTime: 'a few seconds'
-      }
-    });
-  });
-
+  
   test('Should successfully delete a ticket', () => { 
     action = {
       type: 'DELETE_TICKET',

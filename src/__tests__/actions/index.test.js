@@ -13,17 +13,6 @@ describe('help queue actions', () => {
       type: 'TOGGLE_FORM'
     });
   });
-  it('addTicket should create ADD_TICKET action', () => {
-    expect(actions.addTicket({names: 'Jo and Jasmin',location:'3E', issue:'redux not working', timeOpen: 0, formattedWaitTime: "A few secs", id:1})).toEqual({
-      type: c.ADD_TICKET,
-      names: 'Jo and Jasmin',
-      location: '3E',
-      issue:'redux not working',
-      timeOpen: 0,
-      formattedWaitTime: "A few secs",
-      id:1
-    });
-  });
   it('updateTime should create UPDATE_TIME action', () =>
   {
     expect(actions.updateTime(1, "A few secs")).toEqual
