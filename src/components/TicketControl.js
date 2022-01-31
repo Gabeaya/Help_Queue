@@ -6,7 +6,7 @@ import EditTicketForm from './EditTicketForm';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import * as a from './../actions';
-
+import { withFirestore} from 'react-redux-firebase';
 class TicketControl extends React.Component {
 
   //Constructor
@@ -115,7 +115,7 @@ class TicketControl extends React.Component {
       buttonText = "Return to ticket list";
   
     } else {
-      currentlyVisibleState = <TicketList ticketList={this.props.mainTicketList} onTicketSelection={this.handleChangingSelectedTicket} />;//this is how we pass mainTicketList to the ticketlist where ticketList acts as the property to Ticketlist and onticketSelection will be the property representing the changing selected ticket
+      currentlyVisibleState = <TicketList onTicketSelection={this.handleChangingSelectedTicket} />;//this is how we pass mainTicketList to the ticketlist where ticketList acts as the property to Ticketlist and onticketSelection will be the property representing the changing selected ticket
       buttonText = "Add Ticket";
     }
     return (
@@ -141,4 +141,4 @@ const mapStateToProps =  state => {
 }
 
 TicketControl = connect(mapStateToProps)(TicketControl);//this redfines ticketcontrol as a new tickcontrol component with dispatch() and mapStateToProps()at our disposal
-export default TicketControl;
+export default withFirestore(TicketControl);
